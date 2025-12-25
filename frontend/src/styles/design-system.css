@@ -1,0 +1,263 @@
+/* ============================================================================
+   DESIGN SYSTEM - Centralized CSS Variables & Utilities
+   ============================================================================
+   
+   This file contains all design tokens (colors, spacing, typography, etc.)
+   and utility classes for consistent styling across the application.
+   
+   Based on the beautiful design from login.html
+   ============================================================================ */
+
+:root {
+  /* ========================================================================
+     COLORS
+     ======================================================================== */
+  
+  /* Primary Colors */
+  --color-primary: #0071e3;
+  --color-primary-dark: #005bb5;
+  --color-primary-light: #0077ed;
+  
+  /* Neutral Colors */
+  --color-text-primary: #1d1d1f;
+  --color-text-secondary: #86868b;
+  --color-background: #ffffff;
+  --color-background-alt: #fafafa;
+  --color-background-gradient: linear-gradient(135deg, #fafafa 0%, #f5f5f7 100%);
+  
+  /* Border Colors */
+  --color-border: rgba(0, 0, 0, 0.12);
+  --color-border-light: rgba(0, 0, 0, 0.08);
+  --color-border-focus: #0071e3;
+  
+  /* Status Colors */
+  --color-error: #ff3b30;
+  --color-success: #34c759;
+  --color-warning: #ff9500;
+  
+  /* ========================================================================
+     SPACING
+     ======================================================================== */
+  
+  --spacing-xs: 0.25rem;    /* 4px */
+  --spacing-sm: 0.5rem;     /* 8px */
+  --spacing-md: 1rem;       /* 16px */
+  --spacing-lg: 1.5rem;     /* 24px */
+  --spacing-xl: 2rem;       /* 32px */
+  --spacing-2xl: 2.5rem;    /* 40px */
+  --spacing-3xl: 3rem;      /* 48px */
+  
+  /* ========================================================================
+     TYPOGRAPHY
+     ======================================================================== */
+  
+  --font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  
+  /* Font Sizes */
+  --font-size-xs: 0.8125rem;   /* 13px */
+  --font-size-sm: 0.875rem;    /* 14px */
+  --font-size-base: 0.9375rem; /* 15px */
+  --font-size-lg: 1rem;        /* 16px */
+  --font-size-xl: 1.25rem;     /* 20px */
+  --font-size-2xl: 1.75rem;    /* 28px */
+  --font-size-3xl: 2rem;       /* 32px */
+  
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  
+  /* Letter Spacing */
+  --letter-spacing-tight: -1px;
+  --letter-spacing-normal: -0.2px;
+  --letter-spacing-wide: -0.1px;
+  
+  /* ========================================================================
+     BORDERS & RADIUS
+     ======================================================================== */
+  
+  --border-radius-sm: 6px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --border-radius-xl: 20px;
+  --border-radius-full: 9999px;
+  
+  --border-width: 1px;
+  
+  /* ========================================================================
+     SHADOWS
+     ======================================================================== */
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 24px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-primary: 0 2px 8px rgba(0, 113, 227, 0.25);
+  --shadow-primary-hover: 0 4px 16px rgba(0, 113, 227, 0.35);
+  --shadow-focus: 0 0 0 3px rgba(0, 113, 227, 0.1);
+  
+  /* ========================================================================
+     TRANSITIONS
+     ======================================================================== */
+  
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* ========================================================================
+     Z-INDEX
+     ======================================================================== */
+  
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+}
+
+/* ============================================================================
+   UTILITY CLASSES
+   ============================================================================ */
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-md);
+  padding-right: var(--spacing-md);
+}
+
+/* Flex Utilities */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-sm {
+  gap: var(--spacing-sm);
+}
+
+.gap-md {
+  gap: var(--spacing-md);
+}
+
+.gap-lg {
+  gap: var(--spacing-lg);
+}
+
+/* Text Utilities */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.font-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.font-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+/* Spacing Utilities */
+.mb-sm {
+  margin-bottom: var(--spacing-sm);
+}
+
+.mb-md {
+  margin-bottom: var(--spacing-md);
+}
+
+.mb-lg {
+  margin-bottom: var(--spacing-lg);
+}
+
+.mb-xl {
+  margin-bottom: var(--spacing-xl);
+}
+
+.mt-sm {
+  margin-top: var(--spacing-sm);
+}
+
+.mt-md {
+  margin-top: var(--spacing-md);
+}
+
+.mt-lg {
+  margin-top: var(--spacing-lg);
+}
+
+/* Width Utilities */
+.w-full {
+  width: 100%;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn var(--transition-base) ease-out;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* ============================================================================
+   RESPONSIVE BREAKPOINTS
+   ============================================================================ */
+
+@media (max-width: 480px) {
+  :root {
+    --spacing-xl: 1.5rem;
+    --spacing-2xl: 2rem;
+    --spacing-3xl: 2.5rem;
+  }
+}

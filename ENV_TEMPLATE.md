@@ -1,0 +1,5 @@
+# Frontend Environment Variables Template
+# ========================================
+# Backend API URL - change to your deployed backend in production
+NEXT_PUBLIC_API_URL=http://localhost:8000
+NEXT_PUBLIC_WS_URL=ws://localhost:8000

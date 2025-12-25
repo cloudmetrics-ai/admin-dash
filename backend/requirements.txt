@@ -1,0 +1,39 @@
+# Backend Requirements - Production Ready
+# Install with: pip install -r requirements.txt
+
+# Core Framework & Server
+fastapi==0.115.0
+uvicorn[standard]==0.32.1
+pydantic==2.10.3
+pydantic-settings==2.6.1
+email-validator==2.3.0  # Required for Pydantic EmailStr validation
+
+# Database & ORM
+sqlalchemy==2.0.36
+alembic==1.14.0
+psycopg2-binary==2.9.10
+
+# Authentication & Security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.20
+pyotp==2.9.0  # TOTP for MFA
+qrcode[pil]==8.2  # QR code generation for MFA
+
+# Task Queue & Caching (Optional)
+celery==5.4.0
+redis==5.2.1
+
+# AI/LLM Integration (Optional)
+openai==1.57.4
+
+# Utilities
+python-dotenv==1.0.1
+
+# Development & Testing
+pytest==8.3.4
+pytest-asyncio==0.24.0
+httpx==0.28.1
+black==24.10.0
+flake8==7.1.1
+mypy==1.13.0
