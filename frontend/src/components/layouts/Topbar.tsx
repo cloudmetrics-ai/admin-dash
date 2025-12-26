@@ -53,8 +53,10 @@ export default function Topbar() {
                 <p>Here's what's happening with your business today</p>
             </div>
             <div className="user-info">
-                <div className="user-avatar">{getInitials()}</div>
-                <button className="sign-out-link" onClick={handleLogout}>
+                <div className="user-avatar" title={user?.email || 'Admin'}>
+                    {getInitials()}
+                </div>
+                <button className="sign-out-link" onClick={handleLogout} title="Sign out">
                     <LogOut size={16} />
                     Sign Out
                 </button>

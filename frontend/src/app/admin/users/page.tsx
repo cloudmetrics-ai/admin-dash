@@ -12,6 +12,7 @@ import DashboardLayout from '@/components/layouts/DashboardLayout';
 import UserModal from '@/components/users/UserModal';
 import DeleteConfirmModal from '@/components/users/DeleteConfirmModal';
 import { getUsers, updateUser, deleteUser, toggleUserStatus, User, UserUpdate } from '@/lib/users';
+import { Edit2, Power, Trash2 } from 'lucide-react';
 import '../../../styles/dashboard.css';
 
 export default function UsersPage() {
@@ -156,13 +157,7 @@ export default function UsersPage() {
                             placeholder="Search users..."
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            style={{
-                                padding: '0.5rem 1rem',
-                                border: '1px solid rgba(0, 0, 0, 0.08)',
-                                borderRadius: '8px',
-                                fontSize: '0.875rem',
-                                width: '200px',
-                            }}
+                            className="search-input"
                         />
                         <button
                             onClick={handleCreateUser}
@@ -221,48 +216,24 @@ export default function UsersPage() {
                                             <div style={{ display: 'flex', gap: '0.5rem' }}>
                                                 <button
                                                     onClick={() => handleEditUser(user)}
-                                                    style={{
-                                                        padding: '0.25rem 0.75rem',
-                                                        fontSize: '0.75rem',
-                                                        background: '#f5f5f7',
-                                                        border: 'none',
-                                                        borderRadius: '6px',
-                                                        cursor: 'pointer',
-                                                        color: '#0071e3',
-                                                        fontWeight: '600',
-                                                    }}
+                                                    className="action-btn action-btn-edit"
+                                                    title="Edit user"
                                                 >
-                                                    Edit
+                                                    <Edit2 size={16} />
                                                 </button>
                                                 <button
                                                     onClick={() => handleToggleStatus(user)}
-                                                    style={{
-                                                        padding: '0.25rem 0.75rem',
-                                                        fontSize: '0.75rem',
-                                                        background: '#f5f5f7',
-                                                        border: 'none',
-                                                        borderRadius: '6px',
-                                                        cursor: 'pointer',
-                                                        color: user.is_active ? '#ff9f0a' : '#34c759',
-                                                        fontWeight: '600',
-                                                    }}
+                                                    className={`action-btn ${user.is_active ? 'action-btn-deactivate' : 'action-btn-activate'}`}
+                                                    title={user.is_active ? 'Deactivate user' : 'Activate user'}
                                                 >
-                                                    {user.is_active ? 'Deactivate' : 'Activate'}
+                                                    <Power size={16} />
                                                 </button>
                                                 <button
                                                     onClick={() => handleDeleteClick(user)}
-                                                    style={{
-                                                        padding: '0.25rem 0.75rem',
-                                                        fontSize: '0.75rem',
-                                                        background: '#f5f5f7',
-                                                        border: 'none',
-                                                        borderRadius: '6px',
-                                                        cursor: 'pointer',
-                                                        color: '#ff3b30',
-                                                        fontWeight: '600',
-                                                    }}
+                                                    className="action-btn action-btn-delete"
+                                                    title="Delete user"
                                                 >
-                                                    Delete
+                                                    <Trash2 size={16} />
                                                 </button>
                                             </div>
                                         </td>
