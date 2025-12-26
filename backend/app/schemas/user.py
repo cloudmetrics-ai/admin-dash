@@ -254,9 +254,20 @@ class UserResponse(UserBase):
         description="ID of the assigned role"
     )
     
+    role_name: Optional[str] = Field(
+        None,
+        description="Name of the assigned role (e.g., 'admin', 'manager')"
+    )
+    
     role_display_name: Optional[str] = Field(
         None,
         description="Display name of the assigned role"
+    )
+    
+    # Permissions list
+    permissions: list[str] = Field(
+        default_factory=list,
+        description="List of permission names the user has"
     )
     
     class Config:

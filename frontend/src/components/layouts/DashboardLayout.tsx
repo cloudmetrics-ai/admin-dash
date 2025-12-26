@@ -12,6 +12,7 @@ import { useRouter } from 'next/navigation';
 import { isAuthenticated } from '@/lib/auth';
 import Sidebar from './Sidebar';
 import Topbar from './Topbar';
+import Footer from './Footer';
 import '../../styles/dashboard.css';
 
 interface DashboardLayoutProps {
@@ -22,6 +23,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
     const router = useRouter();
     const [isClient, setIsClient] = useState(false);
     const [isChecking, setIsChecking] = useState(true);
+    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
     useEffect(() => {
         // Mark as client-side rendered
@@ -34,6 +36,10 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             setIsChecking(false);
         }
     }, [router]);
+
+    const toggleSidebar = () => {
+        setIsSidebarCollapsed(!isSidebarCollapsed);
+    };
 
     // During SSR, show nothing
     if (!isClient) {
@@ -76,11 +82,14 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
     return (
         <div className="dashboard-container">
-            <Sidebar />
-            <main className="main-content">
+            <Sidebar isCollapsed={isSidebarCollapsed} onToggle={toggleSidebar} />
+            <div className={`main-content ${isSidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
                 <Topbar />
-                {children}
-            </main>
+                <div className="page-content">
+                    {children}
+                </div>
+                <Footer />
+            </div>
         </div>
     );
 }

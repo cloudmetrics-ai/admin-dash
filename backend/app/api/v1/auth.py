@@ -406,19 +406,21 @@ def refresh_token(
     description="Get the currently authenticated user's information"
 )
 def get_me(
-    current_user: User = Depends(get_current_user)
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
 ) -> UserResponse:
     """
     Get current user information
     
     This endpoint returns the profile information of the currently
-    authenticated user.
+    authenticated user, including their role and permissions.
     
     Args:
         current_user: Current authenticated user (injected from token)
+        db: Database session (injected)
         
     Returns:
-        UserResponse: Current user's information
+        UserResponse: Current user's information with role and permissions
         
     Example Request:
         ```
@@ -435,13 +437,28 @@ def get_me(
             "full_name": "John Doe",
             "is_active": true,
             "is_superuser": false,
+            "role_id": 2,
+            "role_name": "admin",
+            "role_display_name": "Administrator",
+            "permissions": ["users.read", "users.create", "products.read"],
             "created_at": "2024-01-01T00:00:00",
             "updated_at": "2024-01-01T00:00:00"
         }
         ```
     """
     
-    return UserResponse.from_orm(current_user)
+    # Create base response from ORM model
+    user_response = UserResponse.from_orm(current_user)
+    
+    # Add role name if user has a role
+    if current_user.role:
+        user_response.role_name = current_user.role.name
+    
+    # Get user permissions
+    permissions = PermissionService.get_user_permissions(current_user, db)
+    user_response.permissions = permissions
+    
+    return user_response
 
 
 # ============================================================================

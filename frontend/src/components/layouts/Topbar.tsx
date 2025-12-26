@@ -2,15 +2,18 @@
  * Topbar Component
  * ================
  * 
- * Top bar with welcome message and user avatar for the admin dashboard.
+ * Top bar with welcome message, user avatar, and sign out link for the admin dashboard.
  */
 
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { getCurrentUser } from '@/lib/auth';
+import { useRouter } from 'next/navigation';
+import { getCurrentUser, logout } from '@/lib/auth';
+import { LogOut } from 'lucide-react';
 
 export default function Topbar() {
+    const router = useRouter();
     const [user, setUser] = useState<any>(null);
 
     useEffect(() => {
@@ -38,6 +41,11 @@ export default function Topbar() {
         return user.email.slice(0, 2).toUpperCase();
     };
 
+    const handleLogout = () => {
+        logout();
+        router.push('/login');
+    };
+
     return (
         <div className="top-bar">
             <div className="welcome">
@@ -46,6 +54,10 @@ export default function Topbar() {
             </div>
             <div className="user-info">
                 <div className="user-avatar">{getInitials()}</div>
+                <button className="sign-out-link" onClick={handleLogout}>
+                    <LogOut size={16} />
+                    Sign Out
+                </button>
             </div>
         </div>
     );
