@@ -251,9 +251,8 @@
     overflow-y: auto;
     overflow-x: hidden;
     padding: 0.5rem;
-    max-width: 1600px;
-    margin: 0 auto;
     width: 100%;
+    box-sizing: border-box;
 }
 
 /* Custom Scrollbar */
@@ -510,10 +509,13 @@
     overflow-x: auto;
     border-radius: 12px;
     margin-top: 1rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 table {
     width: 100%;
+    min-width: 800px;
     border-collapse: separate;
     border-spacing: 0;
 }
